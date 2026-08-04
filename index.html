@@ -367,7 +367,7 @@
   <!-- STEP 4: 결과 -->
   <section class="card step hidden" id="step4">
     <span class="step-tag">STEP 4 · 추천 결과</span>
-    <h2>8월 추천 강좌예요</h2>
+    <h2>9월 추천 강좌예요</h2>
 
     <div class="result-head" id="resultHead"></div>
     <div id="resultBody"></div>
@@ -376,7 +376,7 @@
     <div class="info-note" id="infoNote"></div>
 
     <button class="schedule-toggle" id="scheduleToggle">
-      <span id="scheduleToggleLabel">8월 전체 시간표 보기</span>
+      <span id="scheduleToggleLabel">9월 전체 시간표 보기</span>
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="schedule-table hidden" id="scheduleTable"></div>
@@ -412,84 +412,79 @@ function checkYangcheon(raw){
   return false;
 }
 
-// 8월 시간표 (안내문 기준) — 강의계획서에서 확인된 회차별 내용 포함
-const COURSES_8 = [
- {center:"양천문화회관", floor:"4층", days:"월", period:"8/3~8/31", time:"09:30-12:00",
-  name:"(특강) AI 기반 숏폼 릴스, 쇼츠, 틱톡 크리에이터", level:3, cap:20, type:"특강",
-  cats:["ai","영상편집","숏폼","sns","스마트폰"],
-  desc:"생성형 AI를 활용해 릴스·쇼츠·틱톡 같은 짧은 영상을 직접 만들어보는 특강입니다."},
- {center:"양천문화회관", floor:"4층", days:"월", period:"8/3~8/31", time:"13:00-15:30",
-  name:"(특강) 스마트폰 AI 기초부터 생활 편의 기능 까지", level:1, cap:20, type:"특강",
-  cats:["ai","스마트폰","기초"],
-  desc:"스마트폰이 아직 낯선 분도 AI 기능까지 차근차근 따라올 수 있는 기초 특강입니다."},
- {center:"양천문화회관", floor:"4층", days:"화목", period:"8/4~8/27", time:"09:30-12:00",
-  name:"생활 밀착형 앱 활용(교통, 예약, 번역 등)", level:2, cap:20, type:"정규",
-  cats:["스마트폰","생활앱","교통","예약","번역"],
-  desc:"교통, 예약, 번역 등 실생활에 자주 쓰는 앱들을 능숙하게 설치하고 활용해보는 과정입니다.",
-  sessions:["사진 편집 앱으로 사진 편집하기","클라우드 서비스로 사진·자료 보관하기","구글 어시스턴트 사용하기","네이버 지도·예약 서비스","SNS 알아보기","유튜브 활용하기","본인인증·모바일 뱅킹","모바일 쇼핑"]},
- {center:"양천문화회관", floor:"4층", days:"화목", period:"8/4~8/27", time:"13:00-15:30",
-  name:"ITQ 자격증 파워포인트", level:4, cap:20, type:"정규",
-  cats:["파워포인트","자격증","itq","사무프로그램"],
-  desc:"ITQ 파워포인트 자격증 취득을 목표로 실전 문제풀이까지 다루는 과정입니다."},
+// 9월 시간표 (안내문 기준)
+const COURSES_9 = [
+ {center:"양천문화회관", floor:"4층", days:"월", period:"9/7~9/28", time:"09:30-12:00",
+  name:"(특강) PC로 배우는 영상편집(뱁믹스)", level:3, cap:20, type:"특강",
+  cats:["영상편집","pc","컴퓨터","뱁믹스"],
+  desc:"컴퓨터로 뱁믹스 프로그램을 활용해 영상을 편집하는 방법을 배우는 특강입니다."},
+ {center:"양천문화회관", floor:"4층", days:"월", period:"9/7~9/28", time:"13:00-15:30",
+  name:"(특강) 생성형 AI로 동화작가 되기", level:2, cap:20, type:"특강",
+  cats:["ai","생성형","동화","창작","글쓰기"],
+  desc:"생성형 AI를 활용해 나만의 동화를 직접 써보는 창작 특강입니다."},
+ {center:"양천문화회관", floor:"4층", days:"화목", period:"9/1~9/29", time:"09:30-12:00",
+  name:"스마트폰으로 숏폼 영상편집 마스터하기(캡컷)", level:3, cap:20, type:"정규",
+  cats:["영상편집","숏폼","캡컷","capcut","스마트폰"],
+  desc:"스마트폰과 캡컷 앱으로 숏폼 영상을 촬영하고 편집하는 방법을 배우는 과정입니다."},
+ {center:"양천문화회관", floor:"4층", days:"화목", period:"9/1~9/29", time:"13:00-15:30",
+  name:"AI로 똑똑하게 내 컴퓨터 관리하기", level:2, cap:20, type:"정규",
+  cats:["ai","컴퓨터","관리"],
+  desc:"AI 기능을 활용해 내 컴퓨터를 더 똑똑하고 편리하게 관리하는 방법을 배우는 과정입니다."},
 
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"8/4~8/27", time:"09:30-12:00",
-  name:"구글 크롬 & 구글 앱", level:2, cap:18, type:"정규",
-  cats:["구글","인터넷","크롬","기초"],
-  desc:"구글 크롬 브라우저와 구글의 다양한 앱을 기초부터 활용하는 과정입니다."},
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"8/4~8/27", time:"13:00-15:30",
-  name:"스마트폰 영상 편집과 AI를 활용한 유튜브 크리에이터되기", level:3, cap:18, type:"정규",
-  cats:["영상편집","ai","유튜브","스마트폰"],
-  desc:"스마트폰으로 영상을 촬영·편집하고 AI 도구까지 활용해 유튜브 크리에이터가 되어보는 과정입니다."},
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"8/4~8/27", time:"15:30-18:00",
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"9/1~9/29", time:"09:30-12:00",
+  name:"따라만 하면 완성되는 AI 이미지생성 프롬프트 100선", level:2, cap:18, type:"정규",
+  cats:["ai","이미지생성","프롬프트","그림"],
+  desc:"바로 따라 쓸 수 있는 프롬프트로 AI 이미지를 만들어보는 과정입니다."},
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"9/1~9/29", time:"13:00-15:30",
+  name:"명절카드부터 증명서 발급까지, 스마트폰 생활 수업", level:2, cap:18, type:"정규",
+  cats:["스마트폰","생활앱","증명서","행정","명절카드"],
+  desc:"명절카드 만들기부터 각종 증명서 발급까지, 실생활에 필요한 스마트폰 활용법을 배우는 과정입니다."},
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"9/1~9/29", time:"15:30-18:00",
+  name:"엑셀 활용", level:4, cap:18, type:"정규",
+  cats:["엑셀","사무프로그램"],
+  desc:"엑셀의 다양한 기능을 실무 수준으로 활용해보는 과정입니다."},
+
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"9/2~9/28", time:"09:30-12:00",
+  name:"알아두면 편한 카카오톡 꿀팁 & AI 그림으로 만나는 디지털 세상", level:2, cap:18, type:"정규",
+  cats:["스마트폰","카카오톡","ai","그림"],
+  desc:"카카오톡 활용 꿀팁과 AI로 그림 그리기까지, 재미있게 디지털 세상을 만나보는 과정입니다."},
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"9/2~9/28", time:"13:00-15:30",
+  name:"브루(Vrew)로 수익형 유튜버 되기", level:3, cap:18, type:"정규",
+  cats:["영상편집","유튜브","브루","vrew","ai"],
+  desc:"AI 자막 편집 프로그램 브루(Vrew)를 활용해 유튜브 영상을 만들고 수익화까지 알아보는 과정입니다."},
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"9/2~9/28", time:"15:30-18:00",
   name:"엑셀 기초", level:2, cap:18, type:"정규",
   cats:["엑셀","사무프로그램"],
-  desc:"엑셀의 기본 기능부터 실무에 필요한 데이터 관리, 함수, 차트 작성까지 배우는 과정입니다.",
-  sessions:["엑셀 고수 되기 준비운동","견적서·가계부 만들기","급여명세서·인사고과표 만들기","재직증명서 만들기","자료 비교·분석·차트 만들기","영업 실적표·주문 현황표","목표값 찾기·시나리오 관리자","챗GPT와 엑셀 활용법"]},
+  desc:"엑셀의 기본 기능부터 차근차근 배워보는 입문 과정입니다."},
 
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"8/3~8/31", time:"09:30-12:00",
-  name:"왕초보 컴퓨터 탈출", level:1, cap:18, type:"정규",
-  cats:["컴퓨터기초","왕초보","마우스","키보드"],
-  desc:"컴퓨터를 켜고 끄는 법, 마우스·키보드 사용법부터 키오스크까지 배우는 찐 입문 과정입니다.",
-  sessions:["컴퓨터와 친해지기, 마우스·키보드 놀기","새 창 열기, 윈도우 기본기","내게 맞는 윈도우로 바꾸기","문서 만들기","그림 그리기","파일·폴더 정리하기","3D 그림 그리기","윈도우 고수 되기, 키오스크 체험"]},
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"8/3~8/31", time:"13:00-15:30",
-  name:"손안의 AI 비서, 8가지 앱으로 시작하는 똑똑한 일상", level:4, cap:18, type:"정규",
-  cats:["ai","스마트폰","생활앱","비서"],
-  desc:"스마트폰 속 AI 비서 기능을 활용해 날씨, 길찾기, 번역, 건강관리 등 일상을 편리하게 만드는 과정입니다."},
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"8/3~8/31", time:"15:30-18:00",
-  name:"한글 문서작성 활용", level:3, cap:18, type:"정규",
-  cats:["한글","문서작성","사무프로그램"],
-  desc:"계획표, 가계부, 명함 등 실생활에서 바로 쓸 수 있는 문서를 한글 프로그램으로 만드는 과정입니다.",
-  sessions:["문서 작성하기","계획표·여행지 소개 보고서 만들기","편지·가계부 만들기","차트·표로 혈압 차트 만들기","메모지 만들기","라벨·메일머지로 명함집 만들기","저금통 전개도·신문 만들기","ChatGPT로 문서 만들기"]},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"9/2~9/28", time:"09:30-12:00",
+  name:"스마트폰 하나로 끝내는 AI 생활", level:2, cap:18, type:"정규",
+  cats:["ai","스마트폰","생활앱"],
+  desc:"스마트폰 하나로 다양한 AI 기능을 활용해 일상을 편리하게 만드는 과정입니다."},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"9/2~9/28", time:"13:00-15:30",
+  name:"AI와 함께하는 한글 문서", level:2, cap:18, type:"정규",
+  cats:["ai","한글","문서작성","사무프로그램"],
+  desc:"AI의 도움을 받아 한글 프로그램으로 문서를 더 쉽고 빠르게 작성하는 과정입니다."},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"9/2~9/28", time:"15:30-18:00",
+  name:"제미나이와 구글 드라이브 활용", level:2, cap:18, type:"정규",
+  cats:["ai","구글","제미나이","gemini","드라이브"],
+  desc:"제미나이와 구글 드라이브를 활용해 파일 보관과 AI 기능을 함께 익히는 과정입니다."},
 
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"8/3~8/31", time:"09:30-12:00",
-  name:"구글 크롬 & 구글 앱", level:2, cap:18, type:"정규",
-  cats:["구글","인터넷","크롬","기초"],
-  desc:"구글 크롬 브라우저와 구글의 다양한 앱을 기초부터 활용하는 과정입니다."},
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"8/3~8/31", time:"13:00-15:30",
-  name:"구글 AI 마스터(제미나이, 노트북LM, 구글버즈, 구글 AI 스튜디오)", level:2, cap:18, type:"정규",
-  cats:["ai","구글","제미나이","gemini"],
-  desc:"제미나이를 비롯한 구글의 다양한 AI 서비스를 폭넓게 다뤄보는 과정입니다."},
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"8/3~8/31", time:"15:30-18:00",
-  name:"AI랑 놀자 음악, 그림, 문서 만들기", level:3, cap:18, type:"정규",
-  cats:["ai","음악","그림","창작","문서"],
-  desc:"AI로 음악을 만들고 그림을 그리고 문서까지 완성해보는 창작 중심 과정입니다."},
-
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"8/4~8/27", time:"09:30-12:00",
-  name:"생성형 AI ChatGPT와 Gemini(제미나이) 입문", level:2, cap:20, type:"정규",
-  cats:["ai","챗gpt","chatgpt","제미나이","gemini","입문"],
-  desc:"생성형 AI의 기본 개념을 이해하고 여행, 건강, 행정, 취미 등 실생활에 바로 활용하는 입문 과정입니다.",
-  sessions:["개념 이해, 회원가입과 앱 설치","원하는 답을 얻는 4단계 질문법","구글 서비스와 연동하는 제미나이 활용법","기사·영상 요약, 가짜 정보 구별법","텍스트로 그림 그리기","인사말·민원서·SNS 게시글 작성","외국어 학습, 시쓰기, 여행 계획","AI 윤리·저작권, 복습과 성과 공유"]},
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"8/4~8/27", time:"13:00-15:30",
-  name:"ITQ 자격증 엑셀", level:4, cap:20, type:"정규",
-  cats:["엑셀","자격증","itq","사무프로그램"],
-  desc:"ITQ 엑셀 자격증 취득을 목표로 실전 문제풀이까지 다루는 과정입니다."},
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"8/4~8/27", time:"15:30-18:00",
-  name:"AI 숏폼 영상 편집 CapCut(캡컷)", level:3, cap:20, type:"정규",
-  cats:["ai","영상편집","캡컷","capcut","숏폼"],
-  desc:"캡컷과 AI 기능을 활용해 짧은 영상을 편집하고 완성하는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"9/1~9/29", time:"09:30-12:00",
+  name:"생활 밀착형 앱 활용(교통, 예약, 번역)", level:2, cap:20, type:"정규",
+  cats:["스마트폰","생활앱","교통","예약","번역"],
+  desc:"교통, 예약, 번역 등 실생활에 자주 쓰는 앱들을 활용해보는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"9/1~9/29", time:"13:00-15:30",
+  name:"파워포인트 기초", level:2, cap:20, type:"정규",
+  cats:["파워포인트","사무프로그램"],
+  desc:"파워포인트의 기본 기능을 배워 발표 자료를 직접 만들어보는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"9/1~9/29", time:"15:30-18:00",
+  name:"AI 기반 숏폼 릴스, 쇼츠, 틱톡 크리에이터", level:3, cap:20, type:"정규",
+  cats:["ai","영상편집","숏폼","sns","스마트폰"],
+  desc:"생성형 AI를 활용해 릴스·쇼츠·틱톡 같은 짧은 영상을 직접 만들어보는 과정입니다."},
 ];
 
-const APPLY_INFO = "접수 7.20(월)~7.24(금) / 추가접수 7.27(월)~7.31(금, 전화만) · 선정 7.27(월) 11시 추첨(문자통보)";
+const APPLY_INFO = "접수 8.18(화)~8.21(금) / 추가접수 8.24(월)~8.28(금, 전화만) · 선정 8.24(월) 11시 추첨(문자통보)";
 
 // 관심분야 빠른 선택 chip → 키워드 (key는 자가진단 질문 매칭용)
 const CHIPS = [
@@ -596,7 +591,7 @@ const ageInfo = $("ageInfo");
     state.age = chip.dataset.val; // "senior" | "junior" | "skip"
 
     if(state.age === "junior"){
-      ageInfo.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (7.29(수) 17:00까지 입금)<br>
+      ageInfo.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (8.26(수) 17:00까지 입금)<br>
         우리은행 1006-501-361018 (예금주: 양천구청)`;
       ageInfo.classList.add("show");
     } else if(state.age === "senior"){
@@ -706,7 +701,7 @@ function renderResults(){
   body.innerHTML = "";
 
   const keywordText = [state.interestText, ...state.chips].join(" ");
-  let scored = COURSES_8.map(c=>({
+  let scored = COURSES_9.map(c=>({
     c, score: scoreCourse(c, keywordText, userLevel), levelGap: Math.abs(c.level-userLevel)
   }));
 
@@ -750,7 +745,7 @@ function renderResults(){
   });
 
   $("infoNote").innerHTML = `
-    <b>8월 신청 안내</b><br>
+    <b>9월 신청 안내</b><br>
     ${APPLY_INFO}<br><br>
     신청방법: 양천구청 홈페이지 로그인 → 분야별정보 → 교육 → 정보화교육 → 교육접수<br>
     또는 콜센터 전화 접수 <span class="call">☎ 1833-7966</span><br><br>
@@ -766,20 +761,20 @@ function renderFeeBox(userLevel){
   if(state.age === "senior"){
     box.innerHTML = `🎉 <b>만 55세 이상은 수강료가 전액 면제(무료)</b>예요! 별도 입금 없이 접수만 하시면 됩니다.`;
   } else if(state.age === "junior"){
-    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (7.29(수) 17:00까지 입금)<br>
+    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (8.26(수) 17:00까지 입금)<br>
     우리은행 1006-501-361018 (예금주: 양천구청)`;
   } else {
-    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (7.29(수) 17:00까지 입금)<br>
+    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (8.26(수) 17:00까지 입금)<br>
     <span class="free">단, 만 55세 이상·장애인·기초수급자·북한이탈주민·결혼이민자 등은 수강료가 면제</span>됩니다.<br>
     우리은행 1006-501-361018 (예금주: 양천구청)`;
   }
 }
 
-/* ---- 8월 전체 시간표 ---- */
+/* ---- 9월 전체 시간표 ---- */
 function renderSchedule(){
   const table = $("scheduleTable");
   const groups = {};
-  COURSES_8.forEach(c=>{
+  COURSES_9.forEach(c=>{
     const key = `${c.center} [${c.floor}]`;
     (groups[key] = groups[key]||[]).push(c);
   });
@@ -801,7 +796,7 @@ $("scheduleToggle").addEventListener("click", ()=>{
   const label = $("scheduleToggleLabel");
   const open = table.classList.toggle("hidden") === false;
   btn.classList.toggle("open", open);
-  label.textContent = open ? "8월 전체 시간표 닫기" : "8월 전체 시간표 보기";
+  label.textContent = open ? "9월 전체 시간표 닫기" : "9월 전체 시간표 보기";
 });
 
 /* ---- 접수방법 ---- */
@@ -848,7 +843,7 @@ $("restartBtn").addEventListener("click", ()=>{
   dongStatus.className="status-box";
   $("scheduleTable").classList.add("hidden");
   $("scheduleToggle").classList.remove("open");
-  $("scheduleToggleLabel").textContent = "8월 전체 시간표 보기";
+  $("scheduleToggleLabel").textContent = "9월 전체 시간표 보기";
   $("applyPanel").classList.add("hidden");
   $("applyToggle").classList.remove("open");
   $("applyToggleLabel").textContent = "[접수방법] 보기";
