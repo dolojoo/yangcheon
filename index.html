@@ -367,7 +367,7 @@
   <!-- STEP 4: 결과 -->
   <section class="card step hidden" id="step4">
     <span class="step-tag">STEP 4 · 추천 결과</span>
-    <h2>11월 추천 강좌예요</h2>
+    <h2>12월 추천 강좌예요</h2>
 
     <div class="result-head" id="resultHead"></div>
     <div id="resultBody"></div>
@@ -376,7 +376,7 @@
     <div class="info-note" id="infoNote"></div>
 
     <button class="schedule-toggle" id="scheduleToggle">
-      <span id="scheduleToggleLabel">11월 전체 시간표 보기</span>
+      <span id="scheduleToggleLabel">12월 전체 시간표 보기</span>
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="schedule-table hidden" id="scheduleTable"></div>
@@ -412,79 +412,79 @@ function checkYangcheon(raw){
   return false;
 }
 
-// 11월 시간표 (안내문 기준)
-const COURSES_11 = [
- {center:"양천문화회관", floor:"4층", days:"월", period:"11/2~11/23", time:"09:30-12:00",
-  name:"(특강) 모바일 결제의 모든 것(삼성페이, 네이버페이)", level:3, cap:20, type:"특강",
-  cats:["스마트폰","모바일결제","삼성페이","네이버페이","생활앱"],
-  desc:"삼성페이, 네이버페이 등 모바일 결제 방법을 실생활에서 바로 쓸 수 있게 배우는 특강입니다."},
- {center:"양천문화회관", floor:"4층", days:"월", period:"11/2~11/23", time:"13:00-15:30",
-  name:"(특강) 꼭 알아야 할 구글 앱", level:2, cap:20, type:"특강",
-  cats:["구글","인터넷","기초"],
-  desc:"일상에서 꼭 알아두면 편리한 구글 앱들을 배우는 특강입니다."},
- {center:"양천문화회관", floor:"4층", days:"화목", period:"11/3~11/26", time:"09:30-12:00",
-  name:"AI와 함께하는 네이버 블로그 with AI(클로드, 제미나이)", level:3, cap:20, type:"정규",
-  cats:["ai","네이버","블로그","클로드","claude","제미나이","gemini","글쓰기"],
-  desc:"클로드, 제미나이 등 AI의 도움을 받아 네이버 블로그를 직접 운영해보는 과정입니다."},
- {center:"양천문화회관", floor:"4층", days:"화목", period:"11/3~11/26", time:"13:00-15:30",
-  name:"한글 문서작성 기초", level:2, cap:20, type:"정규",
+// 12월 시간표 (안내문 기준)
+const COURSES_12 = [
+ {center:"양천문화회관", floor:"4층", days:"월", period:"12/7~12/28", time:"09:30-12:00",
+  name:"(특강) 티켓예매(고속버스, 기차, 항공권, 영화)", level:2, cap:20, type:"특강",
+  cats:["스마트폰","생활앱","티켓예매","여행","예매"],
+  desc:"고속버스, 기차, 항공권, 영화 등 각종 티켓을 직접 예매하는 방법을 배우는 특강입니다."},
+ {center:"양천문화회관", floor:"4층", days:"월", period:"12/7~12/28", time:"13:00-15:30",
+  name:"(특강) 스마트한 자료관리(컴퓨터&스마트폰)", level:2, cap:20, type:"특강",
+  cats:["컴퓨터","스마트폰","자료관리","파일관리"],
+  desc:"컴퓨터와 스마트폰의 자료를 스마트하게 정리하고 관리하는 방법을 배우는 특강입니다."},
+ {center:"양천문화회관", floor:"4층", days:"화목", period:"12/1~12/24", time:"09:30-12:00",
+  name:"AI 영상 생성 완전정복(제미나이, 구글 FLOW, 구글 VIDS)", level:3, cap:20, type:"정규",
+  cats:["ai","영상편집","제미나이","gemini","구글","flow","vids"],
+  desc:"제미나이, 구글 FLOW, 구글 VIDS를 활용해 AI 영상 생성을 완전정복하는 과정입니다."},
+ {center:"양천문화회관", floor:"4층", days:"화목", period:"12/1~12/24", time:"13:00-15:30",
+  name:"한글 문서작성 마스터", level:4, cap:20, type:"정규",
   cats:["한글","문서작성","사무프로그램"],
-  desc:"한글 프로그램의 기본 기능부터 차근차근 배워 문서를 작성해보는 과정입니다."},
+  desc:"한글 프로그램의 다양한 기능을 마스터 수준으로 다뤄보는 심화 과정입니다."},
 
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"11/3~11/26", time:"09:30-12:00",
-  name:"생성형 AI 콘텐츠 창작과 영상편집(PC-캡컷)", level:3, cap:18, type:"정규",
-  cats:["ai","생성형","영상편집","캡컷","capcut","pc"],
-  desc:"생성형 AI로 콘텐츠를 만들고 PC 캡컷으로 영상까지 편집해보는 과정입니다."},
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"11/3~11/26", time:"13:00-15:30",
-  name:"키네마스터 모바일 영상편집", level:3, cap:18, type:"정규",
-  cats:["영상편집","키네마스터","kinemaster","스마트폰"],
-  desc:"키네마스터 앱으로 스마트폰에서 영상을 편집하는 방법을 배우는 과정입니다."},
- {center:"목3동주민센터", floor:"2층", days:"화목", period:"11/3~11/26", time:"15:30-18:00",
-  name:"취업 대비 실무 통합반(한글, 엑셀)", level:3, cap:18, type:"정규",
-  cats:["한글","엑셀","사무프로그램","취업","문서작성"],
-  desc:"한글과 엑셀을 함께 다루며 취업에 필요한 실무 문서 작성을 준비하는 과정입니다."},
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"12/1~12/24", time:"09:30-12:00",
+  name:"미리캔버스 디자인 완전정복", level:4, cap:18, type:"정규",
+  cats:["미리캔버스","디자인","콘텐츠"],
+  desc:"미리캔버스를 활용해 다양한 디자인 콘텐츠를 완전정복하는 과정입니다."},
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"12/1~12/24", time:"13:00-15:30",
+  name:"스마트폰으로 즐기는 AI", level:2, cap:18, type:"정규",
+  cats:["스마트폰","ai"],
+  desc:"스마트폰으로 다양한 AI 기능을 즐겁게 활용해보는 과정입니다."},
+ {center:"목3동주민센터", floor:"2층", days:"화목", period:"12/1~12/24", time:"15:30-18:00",
+  name:"AI와 함께하는 엑셀 & 파워포인트 & 한글", level:2, cap:18, type:"정규",
+  cats:["ai","엑셀","파워포인트","한글","사무프로그램"],
+  desc:"AI의 도움을 받아 엑셀, 파워포인트, 한글을 함께 다루는 과정입니다."},
 
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"11/2~11/25", time:"09:30-12:00",
-  name:"스마트폰 앱 스마트하게 활용하기", level:2, cap:18, type:"정규",
-  cats:["스마트폰","생활앱"],
-  desc:"스마트폰 속 다양한 앱을 스마트하게 활용하는 방법을 배우는 과정입니다."},
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"11/2~11/25", time:"13:00-15:30",
-  name:"AI 캐릭터로 만드는 이야기형 숏폼 영상", level:3, cap:18, type:"정규",
-  cats:["ai","영상편집","숏폼","캐릭터","창작"],
-  desc:"AI 캐릭터를 활용해 이야기가 있는 숏폼 영상을 만들어보는 과정입니다."},
- {center:"목5동주민센터", floor:"5층", days:"월수", period:"11/2~11/25", time:"15:30-18:00",
-  name:"PC 사진편집(포토스케이프)", level:3, cap:18, type:"정규",
-  cats:["사진편집","포토스케이프","photoscape","pc"],
-  desc:"포토스케이프 프로그램으로 PC에서 사진을 편집하는 방법을 배우는 과정입니다."},
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"12/2~12/28", time:"09:30-12:00",
+  name:"생활 속 실용 한글 문서 만들기(한글 문서작성 활용)", level:3, cap:18, type:"정규",
+  cats:["한글","문서작성","사무프로그램"],
+  desc:"실생활에 바로 쓸 수 있는 한글 문서를 직접 만들어보는 과정입니다."},
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"12/2~12/28", time:"13:00-15:30",
+  name:"구글 Gemini로 시작하는 스마트 AI 생활과 업무", level:4, cap:18, type:"정규",
+  cats:["ai","구글","제미나이","gemini","업무"],
+  desc:"구글 제미나이를 활용해 스마트한 AI 생활과 업무를 시작하는 과정입니다."},
+ {center:"목5동주민센터", floor:"5층", days:"월수", period:"12/2~12/28", time:"15:30-18:00",
+  name:"캔바로 콘텐츠 디자인하기", level:4, cap:18, type:"정규",
+  cats:["캔바","canva","디자인","콘텐츠"],
+  desc:"캔바를 활용해 다양한 콘텐츠 디자인을 직접 만들어보는 과정입니다."},
 
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"11/2~11/25", time:"09:30-12:00",
-  name:"디지털 생활 첫걸음 - 컴퓨터와 크롬 활용하기", level:2, cap:18, type:"정규",
-  cats:["컴퓨터기초","컴퓨터","크롬","구글","왕초보"],
-  desc:"컴퓨터와 구글 크롬 사용법부터 차근차근 시작하는 디지털 입문 과정입니다."},
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"11/2~11/25", time:"13:00-15:30",
-  name:"챗GPT와 제미나이로 시작하는 AI 콘텐츠 제작", level:2, cap:18, type:"정규",
-  cats:["ai","챗gpt","chatgpt","제미나이","gemini","콘텐츠"],
-  desc:"챗GPT와 제미나이를 활용해 다양한 콘텐츠를 만들어보는 과정입니다."},
- {center:"신월4동주민센터", floor:"4층", days:"월수", period:"11/2~11/25", time:"15:30-18:00",
-  name:"스스로 일하는 AI 에이전트 - 기획부터 콘텐츠 제작까지", level:4, cap:18, type:"정규",
-  cats:["ai","에이전트","기획","콘텐츠","고급"],
-  desc:"AI 에이전트를 활용해 기획부터 콘텐츠 제작까지 스스로 해내는 방법을 배우는 심화 과정입니다."},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"12/2~12/28", time:"09:30-12:00",
+  name:"AI와 함께하는 창작 놀이터: 음악・그림・문서 만들기", level:2, cap:18, type:"정규",
+  cats:["ai","음악","그림","창작","문서"],
+  desc:"AI로 음악을 만들고 그림을 그리고 문서까지 완성해보는 창작 중심 과정입니다."},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"12/2~12/28", time:"13:00-15:30",
+  name:"구글 AI 활용 마스터 클래스", level:4, cap:18, type:"정규",
+  cats:["ai","구글","제미나이","gemini","고급"],
+  desc:"구글의 다양한 AI 서비스를 마스터 수준으로 다뤄보는 심화 과정입니다."},
+ {center:"신월4동주민센터", floor:"4층", days:"월수", period:"12/2~12/28", time:"15:30-18:00",
+  name:"스마트폰 하나로 시작하는 AI 영상 크리에이터", level:3, cap:18, type:"정규",
+  cats:["ai","영상편집","스마트폰","크리에이터"],
+  desc:"스마트폰 하나로 AI를 활용해 영상 크리에이터가 되어보는 과정입니다."},
 
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"11/3~11/26", time:"09:30-12:00",
-  name:"컴퓨터 기초 & 인공지능 입문", level:1, cap:20, type:"정규",
-  cats:["컴퓨터기초","왕초보","ai","입문"],
-  desc:"컴퓨터가 낯선 분도 기초부터 인공지능 입문까지 차근차근 따라오는 과정입니다."},
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"11/3~11/26", time:"13:00-15:30",
-  name:"한글 문서작성 기초 with AI", level:2, cap:20, type:"정규",
-  cats:["한글","문서작성","ai","사무프로그램"],
-  desc:"AI의 도움을 받아 한글 프로그램으로 문서 작성 기초를 배우는 과정입니다."},
- {center:"신월5동주민센터", floor:"3층", days:"화목", period:"11/3~11/26", time:"15:30-18:00",
-  name:"AI와 Vrew(브루)로 수익형 유튜버 되기", level:3, cap:20, type:"정규",
-  cats:["ai","영상편집","유튜브","브루","vrew"],
-  desc:"AI와 브루(Vrew)를 활용해 유튜브 영상을 만들고 수익화까지 알아보는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"12/1~12/24", time:"09:30-12:00",
+  name:"내컴퓨터 관리하기(컴퓨터활용)", level:2, cap:20, type:"정규",
+  cats:["컴퓨터","컴퓨터기초","관리","활용"],
+  desc:"내 컴퓨터를 효율적으로 관리하고 활용하는 방법을 배우는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"12/1~12/24", time:"13:00-15:30",
+  name:"한글을 활용한 실생활 문서 만들기", level:2, cap:20, type:"정규",
+  cats:["한글","문서작성","사무프로그램"],
+  desc:"한글 프로그램으로 실생활에 필요한 문서를 직접 만들어보는 과정입니다."},
+ {center:"신월5동주민센터", floor:"3층", days:"화목", period:"12/1~12/24", time:"15:30-18:00",
+  name:"AI기반 숏폼 릴스・틱톡・쇼츠 크리에이터", level:4, cap:20, type:"정규",
+  cats:["ai","영상편집","숏폼","릴스","틱톡","쇼츠","sns"],
+  desc:"AI를 활용해 릴스・틱톡・쇼츠 같은 숏폼 영상을 만들어보는 과정입니다."},
 ];
 
-const APPLY_INFO = "접수 10.19(월)~10.23(금) / 추가접수 10.26(월)~10.29(목, 전화만) · 선정 10.26(월) 11시 추첨(문자통보)";
+const APPLY_INFO = "접수 11.16(월)~11.20(금) / 추가접수 11.23(월)~11.26(목, 전화만) · 선정 11.23(월) 11시 추첨(문자통보)";
 
 
 // 관심분야 빠른 선택 chip → 키워드 (key는 자가진단 질문 매칭용)
@@ -592,7 +592,7 @@ const ageInfo = $("ageInfo");
     state.age = chip.dataset.val; // "senior" | "junior" | "skip"
 
     if(state.age === "junior"){
-      ageInfo.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (10.28(수) 17:00까지 입금)<br>
+      ageInfo.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (11.25(수) 17:00까지 입금)<br>
         우리은행 1006-501-361018 (예금주: 양천구청)`;
       ageInfo.classList.add("show");
     } else if(state.age === "senior"){
@@ -702,7 +702,7 @@ function renderResults(){
   body.innerHTML = "";
 
   const keywordText = [state.interestText, ...state.chips].join(" ");
-  let scored = COURSES_11.map(c=>({
+  let scored = COURSES_12.map(c=>({
     c, score: scoreCourse(c, keywordText, userLevel), levelGap: Math.abs(c.level-userLevel)
   }));
 
@@ -746,7 +746,7 @@ function renderResults(){
   });
 
   $("infoNote").innerHTML = `
-    <b>11월 신청 안내</b><br>
+    <b>12월 신청 안내</b><br>
     ${APPLY_INFO}<br><br>
     신청방법: 양천구청 홈페이지 로그인 → 분야별정보 → 교육 → 정보화교육 → 교육접수<br>
     또는 콜센터 전화 접수 <span class="call">☎ 1833-7966</span><br><br>
@@ -762,20 +762,20 @@ function renderFeeBox(userLevel){
   if(state.age === "senior"){
     box.innerHTML = `🎉 <b>만 55세 이상은 수강료가 전액 면제(무료)</b>예요! 별도 입금 없이 접수만 하시면 됩니다.`;
   } else if(state.age === "junior"){
-    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (10.28(수) 17:00까지 입금)<br>
+    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (11.25(수) 17:00까지 입금)<br>
     우리은행 1006-501-361018 (예금주: 양천구청)`;
   } else {
-    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (10.28(수) 17:00까지 입금)<br>
+    box.innerHTML = `<b>수강료 안내</b> · 정규과정 10,000원 / 특강과정 5,000원 (11.25(수) 17:00까지 입금)<br>
     <span class="free">단, 만 55세 이상·장애인·기초수급자·북한이탈주민·결혼이민자 등은 수강료가 면제</span>됩니다.<br>
     우리은행 1006-501-361018 (예금주: 양천구청)`;
   }
 }
 
-/* ---- 11월 전체 시간표 ---- */
+/* ---- 12월 전체 시간표 ---- */
 function renderSchedule(){
   const table = $("scheduleTable");
   const groups = {};
-  COURSES_11.forEach(c=>{
+  COURSES_12.forEach(c=>{
     const key = `${c.center} [${c.floor}]`;
     (groups[key] = groups[key]||[]).push(c);
   });
@@ -797,7 +797,7 @@ $("scheduleToggle").addEventListener("click", ()=>{
   const label = $("scheduleToggleLabel");
   const open = table.classList.toggle("hidden") === false;
   btn.classList.toggle("open", open);
-  label.textContent = open ? "11월 전체 시간표 닫기" : "11월 전체 시간표 보기";
+  label.textContent = open ? "12월 전체 시간표 닫기" : "12월 전체 시간표 보기";
 });
 
 /* ---- 접수방법 ---- */
@@ -844,7 +844,7 @@ $("restartBtn").addEventListener("click", ()=>{
   dongStatus.className="status-box";
   $("scheduleTable").classList.add("hidden");
   $("scheduleToggle").classList.remove("open");
-  $("scheduleToggleLabel").textContent = "11월 전체 시간표 보기";
+  $("scheduleToggleLabel").textContent = "12월 전체 시간표 보기";
   $("applyPanel").classList.add("hidden");
   $("applyToggle").classList.remove("open");
   $("applyToggleLabel").textContent = "[접수방법] 보기";
